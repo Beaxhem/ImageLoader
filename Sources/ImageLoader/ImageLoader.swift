@@ -7,6 +7,10 @@ public class ImageLoader {
 
     var networkManager: NetworkManager?
 
+    public init(networkManager: NetworkManager? = nil) {
+        self.networkManager = networkManager
+    }
+
     public func loadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
         if let image = cache.image(for: url) {
             completion(image)
