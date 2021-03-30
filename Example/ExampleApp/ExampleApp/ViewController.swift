@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView?
 
-    lazy var imageLoader = ImageLoader(networkManager: networkManager)
+    lazy var imageLoader = ImageLoader(networkManager: networkManager, dynamic: true)
 
     let networkManager = NetworkManager()
 

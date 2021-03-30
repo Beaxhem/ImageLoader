@@ -84,11 +84,11 @@ extension ImageCache {
     func insertImage(image: UIImage, for url: URL) {
         let decodedImage = image.decoded()
 
-        lock.lock(); defer { lock.unlock() }
-
         if self.image(for: url) != nil {
             removeFromCache(url: url)
         }
+
+        lock.lock(); defer { lock.unlock() }
         urls.insert(url)
         imageCache.setObject(decodedImage, forKey: url as AnyObject)
     }
