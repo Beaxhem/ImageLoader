@@ -7,7 +7,7 @@ class ImageLoader {
 
     var networkManager: NetworkManager?
 
-    func loadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+    public func loadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
         if let image = cache.image(for: url) {
             completion(image)
             return
@@ -30,7 +30,7 @@ class ImageLoader {
     }
 }
 
-final class ImageCache {
+public final class ImageCache {
 
     private lazy var imageCache: NSCache<AnyObject, AnyObject> = {
         let cache = NSCache<AnyObject, AnyObject>()
