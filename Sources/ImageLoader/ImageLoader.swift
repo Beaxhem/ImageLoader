@@ -61,7 +61,7 @@ public final class ImageCache {
         return cache
     }()
 
-    var urls: [URL] = []
+    var urls: Set<URL> = []
 
     private let config: Config
     private let lock = NSLock()
@@ -85,7 +85,11 @@ extension ImageCache {
         let decodedImage = image.decoded()
 
         lock.lock(); defer { lock.unlock() }
-        urls.append(url)
+
+        if self.image(for: url) != nil {
+            removeFromCache(url: url)
+        }
+        urls.insert(url)
         imageCache.setObject(decodedImage, forKey: url as AnyObject)
     }
 
@@ -97,6 +101,10 @@ extension ImageCache {
         }
 
         return nil
+    }
+
+    func removeFromCache(url: URL) {
+        imageCache.removeObject(forKey: url as AnyObject)
     }
 }
 
