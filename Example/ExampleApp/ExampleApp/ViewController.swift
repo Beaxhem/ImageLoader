@@ -7,12 +7,15 @@
 
 import UIKit
 import ImageLoader
+import NetworkManagement
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView?
 
-    let imageLoader = ImageLoader()
+    lazy var imageLoader = ImageLoader(networkManager: networkManager)
+
+    let networkManager = NetworkManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,9 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 200)
+    }
 }
 
 extension ViewController: UICollectionViewDataSource {
@@ -40,9 +46,29 @@ extension ViewController: UICollectionViewDataSource {
             fatalError()
         }
 
-        cell.image = imageLoader.image
+        guard let url = URL(string: "https://picsum.photos/200/300") else {
+            fatalError()
+        }
+
+        imageLoader.loadImage(from: url) { image in
+            DispatchQueue.main.async {
+                cell.image = image
+            }
+        }
+
+        return cell
     }
 
     
 }
 
+class ImageCell: UICollectionViewCell {
+
+    @IBOutlet weak var imageView: UIImageView?
+
+    var image: UIImage? {
+        didSet {
+            imageView?.image = image
+        }
+    }
+}
