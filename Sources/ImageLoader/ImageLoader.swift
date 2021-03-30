@@ -1,7 +1,7 @@
 import UIKit
 import NetworkManagement
 
-class ImageLoader {
+public class ImageLoader {
 
     private let cache = ImageCache()
 

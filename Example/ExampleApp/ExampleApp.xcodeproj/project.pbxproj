@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		88F94D442613633C00776CAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88F94D422613633C00776CAE /* Main.storyboard */; };
 		88F94D462613633F00776CAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88F94D452613633F00776CAE /* Assets.xcassets */; };
 		88F94D492613633F00776CAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88F94D472613633F00776CAE /* LaunchScreen.storyboard */; };
+		88F94D532613672F00776CAE /* ImageLoader in Frameworks */ = {isa = PBXBuildFile; productRef = 88F94D522613672F00776CAE /* ImageLoader */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88F94D532613672F00776CAE /* ImageLoader in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = ExampleApp;
+			packageProductDependencies = (
+				88F94D522613672F00776CAE /* ImageLoader */,
+			);
 			productName = ExampleApp;
 			productReference = 88F94D392613633C00776CAE /* ExampleApp.app */;
 			productType = "com.apple.product-type.application";
@@ -110,6 +115,9 @@
 				Base,
 			);
 			mainGroup = 88F94D302613633C00776CAE;
+			packageReferences = (
+				88F94D512613672F00776CAE /* XCRemoteSwiftPackageReference "ImageLoader" */,
+			);
 			productRefGroup = 88F94D3A2613633C00776CAE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -341,6 +349,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		88F94D512613672F00776CAE /* XCRemoteSwiftPackageReference "ImageLoader" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Beaxhem/ImageLoader.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		88F94D522613672F00776CAE /* ImageLoader */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88F94D512613672F00776CAE /* XCRemoteSwiftPackageReference "ImageLoader" */;
+			productName = ImageLoader;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 88F94D312613633C00776CAE /* Project object */;
 }
